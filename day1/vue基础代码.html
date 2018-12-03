@@ -10,15 +10,17 @@
 <body>
     <!-- 下面new的vue会控制这里的内容 -->
     <div id="app">
-
+        <p>{{msg}}</p>
     </div>
     <script>
         //创建vue实例
         var vm = new Vue({
-            //el表示new的vue要控制页面的那个区域
+            //el属性表示new的vue要控制页面的那个区域
             el:'#app',
-            //data  存放el中要用到的数据
-            data:''
+            //data属性存放el中要用到的数据
+            data:{
+                msg:'hello'
+            }
 
         })
     </script>

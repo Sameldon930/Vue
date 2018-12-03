@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+</head>
+<body>
+    <!-- 下面new的vue会控制这里的内容 -->
+    <div id="app">
+        <!-- 使用方法1 直接循环出来-->
+        <p v-for="item in list">{{item}}</p>
+
+        <!-- 使用方法2 含有索引值-->
+        <p v-for="(item,index) in list">索引值:{{index}}---键值{{item}}</p>
+
+
+        <!-- 使用方法3 循环对象数组-->
+        <p v-for="item in text">{{item.id}}---{{item.name}}</p>
+
+        <!-- 使用方法4 循环对象数组加索引-->
+        <p v-for="(item,index) in text">{{item.id}}---{{item.name}}</p>
+
+
+        <!-- 使用方法5 循环对象-->
+        <p v-for="(val,key,index) in user">{{val}}-----{{key}} ----{{index}}</p>
+
+        <!-- 使用方法6 迭代数字-->
+        <p v-for="count in 10">{{count}}</p>
+
+    </div>
+    <script>
+        //创建vue实例
+        var vm = new Vue({
+            //el属性表示new的vue要控制页面的那个区域
+            el:'#app',
+            //data属性存放el中要用到的数据
+            data:{
+                list:[1,2,3,4,5,6],
+                text:[
+                    {'id':'1','name':'zzs1'},
+                    {'id':'2','name':'zzs2'},
+                    {'id':'3','name':'zzs3'},
+                    {'id':'4','name':'zzs4'},
+                    
+                ],
+                user:{
+                    id:1,
+                    name:'zzs',
+                    gender:'男'
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

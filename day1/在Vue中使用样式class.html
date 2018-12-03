@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color:red;
+        }
+        .thin{
+            font-weight: 200;
+        }
+        .italic{
+            font-style: italic
+        }
+        .active{
+            letter-spacing: 0.5em
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 第一种使用方法 -->
+        <h1 :class="['italic','thin']">djaj奥圣诞节就爱看来得及啊</h1>
+
+        <!-- 第二种使用方法  数组中使用三元表达式 -->
+        <h1 :class="['italic','thin',flag?'active':'']">djaj奥圣诞节就爱看来得及啊</h1>
+
+        <!-- 第三种使用方法  数组中使用对象 进行调用data -->
+        <h1 :class="['italic','thin',{'active':flag}]">djaj奥圣诞节就爱看来得及啊</h1>
+
+        <!-- 第四种使用方法  直接使用对象-->
+        <h1 :class="{red:true,thin:true,active:false}">djaj奥圣诞节就爱看来得及啊</h1>
+
+        <!-- 第四种使用方法的优化  数据绑定的原理-->
+        <h1 :class="pig">djaj奥圣诞节就爱看来得及啊</h1>
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:true,
+                pig:{red:true,thin:true,active:false}
+            }
+        })        
+    </script>
+</body>
+</html>

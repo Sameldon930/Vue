@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="走" @click="run"/>
+        <input type="button" value="停" @click="stop"/>
+        <h4>{{msg}}</h4>
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'猥琐发育,别浪~~',
+                interval:null
+            },
+            methods:{
+                run(){
+                    //如果想要获取data里面的值  或者 想要调用methods下面的方法 
+                    // 必须通过this.数据属性名 或者this.方法名进行访问  这里的this.代表new出来的实例
+                    if(this.interval != null) return
+                    this.interval = setInterval(()=>{
+                        //获取msg的第一个字符
+                        var start = this.msg.substring(0,1);
+                        //获取msg的后面所有字符
+                        var end = this.msg.substring(1);
+                        //重新拼接字符 复制到msg
+                        this.msg = end + start
+                    }, 100);
+                    
+                },
+                stop(){
+                    clearInterval(this.interval);
+                    //每当清除定时器之后,把interval等于null
+                    this.interval = null
+                }
+            }
+        })
+    </script>
+       
+</body>
+</html>
