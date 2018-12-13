@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+
+    <style>
+       
+        
+    </style>
+</head>
+<body>
+    <div id="app">
+        <cmtbox></cmtbox>
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list " :key="item.id">
+                <span class="badge">评论人:{{item.user}}</span>
+                {{item.content}}
+            </li>
+            
+        </ul>
+        
+    </div>  
+    <template id="tmp1">
+        <div>
+            <div class="form-group">
+                <label>
+                    评论人:
+                </label>
+                    <input type="text" class="form-control" v-model="user">
+                
+            </div>
+            <div class="form-group">
+                <label>
+                    评论内容:
+                </label>
+                    <textarea class="form-control" v-model="content"></textarea>
+            </div>  
+            <div class="form-group">
+                    
+                    <input type="button" value="发表" class="btn btn-primary" @click="postComment">
+            </div>
+        </div>
+    </template>
+    <script>
+      
+        var commentBox = {
+            template:'#tmp1',
+            data(){
+                return{
+                    user:'',
+                    content:''
+                }
+            },
+            methods:{
+                postComment(){
+                    
+                }
+            }
+        }
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[
+                    {id:Date.now(),user:'关于我们',content:'大速度快安徽'},
+                    {id:Date.now(),user:'客户案例',content:' 的缴纳时抠脚大汉阿鼠'},
+                    {id:Date.now(),user:'合作加盟',content:'打卡机阿鼠和经典款好是的杀毒'},
+                    {id:Date.now(),user:'联系我们',content:'大神带哦啊吗单'}
+                ]   
+            },
+            methods:{
+                
+            },
+            components:{
+                cmtbox:commentBox
+            }
+        })
+    </script>
+</body>
+</html>

@@ -7,29 +7,27 @@
     <title>Document</title>
     <link rel="stylesheet" href="./lib/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
-    <style>
-        
-    </style>
+    
 </head>
 <body>
     <div id="app">
-        <input type="button" value="切换" @click="flag=!flag">
-        <!-- :duration 来设置动画的入场和离场的总时长 -->
-        <!-- 第一种写法:    :duration="1000"
-             第二种写法:    :duration="{ enter:200 , leave:400}" 
-        -->
-            <transition enter-active-class=" bounceIn" leave-active-class=" bounceOut" :duration="{ enter:200 , leave:400}">
-                <h3 v-if="flag" class="animated">hello my world</h3>
-            </transition>
+        <!-- 使用组件 -->
+        <mycom2></mycom2>
     </div>
     <script src="./lib/Vue.js"></script>
     <script>
+        //template指向的内容必须有且只有一个根元素 也就是多个标签的时候 用div包起来
+        Vue.component('mycom2',{
+              template:'<div><h3>这是直接使用vue.component创建出来的组件</h3></div>'
+        })
         var vm = new Vue({
             el:'#app',
             data:{
-                flag:false
+               
             },
             methods:{
+                
+
             }
         })
     </script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+    
+</head>
+<body>
+    <div id="app">
+        <count></count>
+    </div>
+
+
+    <!-- template 里面的元素要用div包裹起来 -->
+    <template id="tmp">
+        <div>
+
+            <input type="button" value="+1" @click="inrement">
+            <h3>{{  count }}</h3>
+        </div>
+
+    </template>
+    
+    
+    <script src="./lib/Vue.js"></script>
+    <script>
+        //这是计数器组件,点击按钮让data中的count值+1
+        var dataObj = {count:0}
+        console.log(dataObj)
+        Vue.component('count',{
+            template:'#tmp',
+            data(){
+                return dataObj
+            },
+            methods:{
+                inrement(){
+                    this.count++
+                }
+            }
+
+
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+               
+            },
+            methods:{
+                
+
+            }
+        })
+        
+    </script>
+</body>
+</html>

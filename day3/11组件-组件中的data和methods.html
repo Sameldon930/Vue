@@ -7,31 +7,41 @@
     <title>Document</title>
     <link rel="stylesheet" href="./lib/bootstrap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
-    <style>
-        
-    </style>
+    
 </head>
 <body>
     <div id="app">
-        <input type="button" value="切换" @click="flag=!flag">
-        <!-- :duration 来设置动画的入场和离场的总时长 -->
-        <!-- 第一种写法:    :duration="1000"
-             第二种写法:    :duration="{ enter:200 , leave:400}" 
-        -->
-            <transition enter-active-class=" bounceIn" leave-active-class=" bounceOut" :duration="{ enter:200 , leave:400}">
-                <h3 v-if="flag" class="animated">hello my world</h3>
-            </transition>
+       <mycom1></mycom1> 
     </div>
+
+    <template id="tmp1">
+        <h1>全局组件---{{ msg }}</h1>
+    </template>   
+    
+    
     <script src="./lib/Vue.js"></script>
     <script>
+        // 组件中的data是一个方法 而且返回的必须是一个对象
+        // 实例中的data可以是一个对象
+        Vue.component('mycom1',{
+            template:'#tmp1',
+            data(){
+                return {
+                    msg:'这是组件中的data定义的数据'
+                }
+            }
+        })
         var vm = new Vue({
             el:'#app',
             data:{
-                flag:false
+               
             },
             methods:{
+                
+
             }
         })
+        
     </script>
 </body>
 </html>
