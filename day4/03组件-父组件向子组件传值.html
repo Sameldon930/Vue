@@ -16,7 +16,7 @@
 <body>
     <div id="app">
         <!-- 父组件引用子组件的时候,通过v-bind方式 把需要的数据传给子组件 -->
-       <com1 v-bind:parentmsg="msg"></com1>
+       <com1 :parentmsg="msg"></com1>
     </div>  
     <script>
         
@@ -29,7 +29,6 @@
             },
             components:{
                 //子组件默认无法访问到父组件中的data和methods
-
                 //data中的数据 是可读可写  props中的数据只能读
                 com1:{
                     template:'<h3>这是子组件--{{ parentmsg }}</h3>',

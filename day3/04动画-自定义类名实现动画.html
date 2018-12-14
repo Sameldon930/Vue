@@ -41,7 +41,7 @@
 <hr>
         <input type="button" value="切换" @click="flag2=!flag2">
         <transition name="my">
-            定义name为my之后 以后样式的类名开头不是v- 而是my-
+            <!-- 定义name为my之后 以后样式的类名开头不是v- 而是my- -->
             <h6 v-if="flag2">hello my world</h6>
         </transition>
     </div>

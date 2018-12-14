@@ -45,7 +45,7 @@
         <a href="http://www.baidu.com" @click.once="linkclick">有问题找百度</a>  -->
 
         <!-- .stop 和 .self 区别 -->
-        .self只会阻止自身的冒泡行为触发,不会阻止真正的冒泡行为
+        <!-- .self只会阻止自身的冒泡行为触发,不会阻止真正的冒泡行为 -->
         <div class="outer" @click="div2handler">
             <div class="inner" @click.self="divhandler">
                     <input type="button" value="戳" @click="btnhandler" >

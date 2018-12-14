@@ -18,8 +18,10 @@
         <!-- 第一种写法:    :duration="1000"
              第二种写法:    :duration="{ enter:200 , leave:400}" 
         -->
-            <transition enter-active-class=" bounceIn" leave-active-class=" bounceOut" :duration="{ enter:200 , leave:400}">
-                <h3 v-if="flag" class="animated">hello my world</h3>
+            <transition enter-active-class=" bounceIn" 
+                        leave-active-class=" bounceOut" 
+                        :duration="{ enter:200 , leave:400}">
+                <h3 v-if="flag" >hello my world</h3>
             </transition>
     </div>
     <script src="./lib/Vue.js"></script>

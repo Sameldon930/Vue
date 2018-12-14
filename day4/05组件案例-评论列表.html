@@ -17,7 +17,9 @@
 </head>
 <body>
     <div id="app">
-        <cmtbox></cmtbox>
+        <!-- 父组件方法传给子组件进行调用 -->
+        <cmtbox @func="loadComments"></cmtbox>
+
         <ul class="list-group">
             <li class="list-group-item" v-for="item in list " :key="item.id">
                 <span class="badge">评论人:{{item.user}}</span>
@@ -60,7 +62,19 @@
             },
             methods:{
                 postComment(){
-                    
+                    var comment = {id:Date.now(),user:this.user,content:this.content}   
+                    //获取之前所有评论存放到cmts里面  如果取不到 则返回一个空数组  获取的结果转换成json对象
+                     var List = JSON.parse(localStorage.getItem('cmts') || '[]')
+                    //执行插入
+                    List.unshift(comment)
+                    //插入后 刷新保存的评论  序列化List字符串
+                    localStorage.setItem('cmts',JSON.stringify(List))
+                    //插入后 输入框置空
+                    this.user = this.content =''
+                    //触发func方法
+                    this.$emit('func')
+
+            
                 }
             }
         }
@@ -75,7 +89,19 @@
                     {id:Date.now(),user:'联系我们',content:'大神带哦啊吗单'}
                 ]   
             },
+            beforeCreate() {//这里不能调用loadComments方法,因为此时的data和methods都没被初始化
+                
+            },
+            created() {
+                this.loadComments()
+            },
             methods:{
+                //从本地的localStorage中加载评论列表
+                loadComments(){
+                    //获取之前所有评论存放到cmts里面  如果取不到 则返回一个空数组  获取的结果转换成json对象
+                    var List = JSON.parse(localStorage.getItem('cmts') || '[]')
+                    this.list  = List
+                }
                 
             },
             components:{

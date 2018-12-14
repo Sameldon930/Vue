@@ -19,11 +19,10 @@
         
         <h4>{{msg}}</h4>
         <!-- v-bind  只能实现数据的单向绑定,从M自动绑定到V,无法实现双向绑定 -->
-        <input type="text" v-bind:value="msg"><br>
+        <input type="text":value="msg"><br>
         <!-- v-model 可以实现 表单元素和model中数据的双向绑定
-        只能用在表单元素中 例如 input select checkbox  radio text button address  email textarea 等
-        
-        <input type="text" v-model="msg"> -->
+        只能用在表单元素中 例如 input select checkbox  radio text button address  email textarea 等-->
+        <input type="text" v-model="msg"> 
 
 
     </div>
