@@ -5,29 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="./lib/Vue.js"></script>
     <style>
+        /* v-cloak作用是让页面在加载的时候 不让模板引擎出现在页面上 直接隐藏掉 */
         [v-cloak]{
-            display: none;
-        }
-    </style>
+                display: none;
+            }
+        </style>
 </head>
+    
 <body>
-    <div id="app">
-            <!-- v-cloak能够解决传值的时候出现闪烁的问题  样式是display:none -->
-        <p v-cloak>{{msg}}</p>
-            <!-- v-text默认没有闪烁问题 会覆盖元素中的内容     v-cloak只会替换自己的占位符,不会把元素清空-->
-
-        <h4 v-text="msg"></h4>
+    <div id="app" >
+       <p v-cloak>{{ msg }}</p> 
     </div>
     <script src="./lib/Vue.js"></script>
-
     <script>
         var vm = new Vue({
             el:'#app',
             data:{
-                msg:'123'
+                msg:'v-cloak'
             }
-        })
-    </script>    
+        })   
+    </script>
+     
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    
+</head>
+    
+<body>
+    <div id="app" >
+       <!-- v-on 用来绑定js事件 用法如下 写法1-->
+       <input type="button" value="v-on绑定时间 点击查看" v-on:click="show"><!--click 为 点击时间 onclick-->
+       <input type="button" value="v-on绑定时间 点击查看" v-on:mouseover="show"><!-- mouseover鼠标移动到按钮 出发的方法-->
+        <!-- 写法2 @加上事件名 -->
+       <input type="button" value="v-on绑定时间 点击查看" @mouseover="show"><!-- mouseover鼠标移动到按钮 出发的方法-->
+
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{//存放方法的对象
+                show(){
+                    alert('OK');
+                }
+                
+            }
+        })
+    </script>
+     
+</body>
+</html>

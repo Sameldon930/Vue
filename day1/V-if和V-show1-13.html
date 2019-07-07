@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    
+</head>
+    
+<body>
+    <div id="app">
+        <input type="button" value="切换" @click="change">
+        <!-- 如果元素涉及频繁的隐藏显示 不要用v-if -->
+        <h3 v-if="flag">这是用v-if控制的元素</h3>  <!-- 不满足就注释掉-->
+        <h3 v-show="flag">这是用v-show控制的元素</h3> <!-- 不满足就display none-->
+
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                flag:true  
+                
+            },
+            methods:{
+                change(){
+                    this.flag = !this.flag
+                }
+
+            }
+        })
+    </script>
+     
+</body>
+</html>

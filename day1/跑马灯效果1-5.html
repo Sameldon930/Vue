@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    
+</head>
+    
+<body>
+    <div id="app" >
+        <input type="button" value="run" @click="run">
+        <input type="button" value="stop" @click="stop">
+
+        <h4>{{ msg }} </h4>
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({//调用实例中的属性或方法  需要用this来进行调用
+            el:'#app',
+            data:{
+                msg:'run run run run run',
+                interId:null,//定时器的变量
+            },
+            methods:{
+                run(){
+                    //console.log(this.msg);
+                    //判断是否初始化状态 不是就不执行
+                    if(this.interId != null)return ;
+                    //接收this
+                    this.interId = setInterval(()=>{//箭头函数的作用就是 函数内部的this等价于函数外部的this 如果没有采取箭头函数的方法 就需要把this另外赋值
+                        var run = this.msg.substring(0,1);//截取字符串中的第一个字符
+                        var end = this.msg.substring(1);//截取最后
+                        //思路就是  截取前面的 拼接都尾部 一直循环
+                        this.msg = end + run;
+                    },400)
+                },
+                stop(){
+                    clearInterval(this.interId);
+                    //每当停止之后 就初始化
+                    this.interId = null
+                }
+            }
+        })   
+    </script>
+     
+</body>
+</html>

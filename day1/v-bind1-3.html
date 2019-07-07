@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    
+</head>
+    
+<body>
+    <div id="app" >
+        <!-- v-bind 写法1 -->
+       <input type="button" value="鼠标划到按钮上方查看 按钮真实内容" :title="msg">
+        <!-- v-bind 写法2 -->
+       <input type="button" value="鼠标划到按钮上方查看 按钮真实内容" v-bind:title="msg">
+
+       <!-- v-bind绑定值 拼接其他内容的写法 -->
+       <input type="button" value="鼠标划到按钮上方查看 按钮真实内容" :title="msg + '1231' + msg2">
+
+
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'v-bind的用法',
+                msg2:'hhhh'
+            }
+        })   
+    </script>
+     
+</body>
+</html>

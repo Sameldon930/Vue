@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+        .inner{
+            height: 150px;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+    
+<body>
+    <div id="app"  >
+
+        事件修饰符 可以进行串联  @click.prevent.once
+
+        <!-- stop  阻止冒泡  点击按钮只会触发按钮的事件  不会触发外层div的事件-->
+        <div class="inner" @click="app">
+            <input type="button" value="event" @click.stop="text">
+        </div>
+        <br>
+        <!-- prevent  阻止默认事件 阻止a标签的默认行为 也就是点击不再进行链接跳转  只会触发方法-->
+        <a href="http://www.baidu.com" @click.prevent="link">百度一下</a>
+        <br>
+        <!-- capture  添加事件侦听器时使用事件的捕获模式  点击按钮先触发外层事件  再触发自身的事件 -->
+        <div class="inner" @click.capture="app">
+                <input type="button" value="event" @click="text">
+        </div>
+        <br>
+        <!-- self   只当事件在该元素本身 比如不是子元素触发时调用 必须点击对应的区域才能触发方法 否则通过冒泡和捕捉都不行-->
+        <div class="inner" @click.self="app">
+                <input type="button" value="event" @click="text">
+        </div>
+        <br>
+        <!-- once   事件只触发一次 之后所有的修饰符都失效-->
+        <a href="http://www.baidu.com" @click.prevent.once="link">百度一下</a>
+
+
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+                app(){
+                    console.log('这是触发了div 的点击事件');
+                    
+                },
+                text(){
+                    console.log('这是触发了input 的点击事件');
+
+                },
+                link(){
+                    console.log('触发！');
+                }
+            }
+        })
+    </script>
+     
+</body>
+</html>

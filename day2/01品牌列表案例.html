@@ -5,35 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <style>
-        [v-cloak]{
-            display: none;
-        }
-    </style>
+    <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap-grid.css" rel="stylesheet"> 
 </head>
 <body>
     <div id="app">
-        <input type="button" value="更换" @click="change">
-        v-if是删除和创建元素
-        <h3 v-if="flage">v-if控制</h3>
-        v-show是隐藏元素
-        <h3 v-show="flage">v-show控制</h3>
 
     </div>
     <script src="./lib/Vue.js"></script>
-
     <script>
         var vm = new Vue({
             el:'#app',
             data:{
-                flage:false
+
             },
             methods:{
-                change(){
-                    this.flage = !this.flage
-                }
+
             }
         })
-    </script>    
+    </script> 
 </body>
 </html>

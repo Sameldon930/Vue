@@ -6,35 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="./lib/Vue.js"></script>
-    <link rel="stylesheet" href="./lib/bootstrap.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
-
-
     <style>
-       
         
     </style>
 </head>
+    
 <body>
-    <div id="app">
-       <input type="button" value="获取元素" @click="getElement">
-        <h3>sdjaksd akjsd a</h3>
-    </div>  
-   
+    <div id="app"  >
+        <h1>{{ msg}}</h1>
+        
+        <!-- v-bind绑定  数据来源的变化才会影响变化-->
+        <input type="text" :value="msg">
+
+        v-model 双向绑定 互相影响
+        <input type="text" v-model="msg">
+
+    </div>
+    <script src="./lib/Vue.js"></script>
     <script>
-      
         var vm = new Vue({
             el:'#app',
             data:{
-               
+                msg:'hello'
             },
-            
             methods:{
                 
-                
-            },
-           
+            }
         })
     </script>
+     
 </body>
 </html>

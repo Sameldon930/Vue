@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    
+</head>
+    
+<body>
+    <div id="app">
+
+        <div>
+            <label for="">ID:
+                <input type="text"  v-model="id">
+            </label>
+            <label for="">NAME:
+                    <input type="text"  v-model="name">
+            </label>
+            <input type="button" value="添加" @click="go">
+        </div>
+        <p v-for="item in list" :key="item.id">{{ item.id }}------{{ item.name }}</p>
+        
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                id:'',
+                name:'',
+                list:[
+                    {id:1,name:'zzs'},
+                    {id:2,name:'zzs1'},
+                    {id:3,name:'zzs2'},
+                    {id:4,name:'zzs3'},
+                ]
+                
+            },
+            methods:{
+                go(){
+                    this.list.push({id:this.id,name:this.name})
+                }
+
+            }
+        })
+    </script>
+     
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+        [v-cloak]{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 页面获取对象数据的模板写法 1-->
+        <p v-cloak>+++++++{{ msg }}+++++++</p><!-- 可以和其他内容混在一起-->
+        <!-- 页面获取对象数据的模板写法 2-->
+        <p v-text="msg">+++++++</p>    <!-- 不可以和其他内容混在一起-->
+    两者区别  区别1 直接用花括号的模板有闪烁问题
+             区别2  v-text的两边不能在拼接其他的内容也就是会覆盖元素中的内容  运用模板可以用前端代码进行结合
+
+
+        <!--  ************************************************ -->
+        <p>{{ msg2 }}</p> <!--无法解析msg2内容 只会原样输出 -->
+        <p v-text="msg2"></p><!--无法解析msg2内容 只会原样输出 -->
+        <p v-html="msg2"></p><!-- v-html 可以解析-->
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        //创建vue的实力
+        var vm = new Vue({
+            el:'#app',//vue控制的区域id
+            data:{//存放页面要用到的数据
+                msg:'hell my world',
+                msg2:'<h1>哈哈哈</h1>',
+            }
+        })    
+    </script>
+     
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+        
+    </style>
+</head>
+    
+<body>
+    <div id="app">
+
+        遍历普通数组
+            <p v-for="(item,key) in list ">{{key}}------{{ item }}</p>
+            <br>
+        遍历对象数组 
+            <p v-for="(arr,key) in list2">{{ arr.id }}----{{ arr.name }} ------ {{ arr.age }}----{{key}}</p>
+            <br>
+        遍历对象 值 键 索引
+            <p v-for="(obj,i,o) in list3">{{ obj }}----{{i}}---{{o}}</p>
+            <br>
+        遍历数字 值从1开始 键从0开始
+            <p v-for="(count,i) in 10">第 {{ count }} 次循环 ---------- {{i}}</p>
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                list:[2,3,4,5,6,67,7,4,3,3,],
+                list2:[
+                    {id:1,name:'zzs',age:2},
+                    {id:2,name:'zzs',age:3},
+                    {id:3,name:'zzs',age:4},
+                    {id:4,name:'zzs',age:5},
+                ],
+                list3:{id:1,name:'22zzsda',zzs:'sdasdas'}
+                
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+     
+</body>
+</html>

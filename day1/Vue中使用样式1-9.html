@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/Vue.js"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .thin{
+            font-weight: 299;
+        }
+        .italic{
+            font-style: italic;
+        }
+        .active{
+            letter-spacing: 0.5em;
+        }
+    </style>
+</head>
+    
+<body>
+    <div id="app"  >
+        <!-- vue中使用class  -->
+        <h1 :class="['red','thin','italic',flag?'active':'']">vue中使用class</h1>
+        <!-- 三元表达式的使用 -->
+        <h1 :class="[flag?'active':'']">vue中使用class</h1>
+        <!-- 在类中放入一个对象 -->
+        <h1 :class="['red','thin','italic',{'active':flag}]">vue中使用class</h1>
+        <!-- 直接使用对象 使用方法1-->
+        <h1 :class="{red:true,thin:true}">vue中使用class</h1>
+        <!-- 直接使用对象 使用方法2-->
+        <h1 :class="zzs">vue中使用class</h1>
+
+
+
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                
+                flag:false,
+                zzs:{red:true,thin:true}
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+     
+</body>
+</html>
