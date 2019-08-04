@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 调用组件com -->
+        <com></com>
+    </div>
+    <template id="com">
+        
+        <div>这是全局组件 名字叫com  这是组件中的data:{{ msg }}</div>
+    </template>    
+    <script src="./lib/Vue.js"></script>
+    <script>
+        // 组件的data是一个函数 function 并且必须要返回一个对象 不能不返回
+        // 实例中的data是一个对象  obj  
+        // 两者调用data中的数据的写法是一样的  都是 {{ }} 进行渲染
+        // 两者不同 需要注意
+        Vue.component('com',Vue.extend({
+            template:'#com',
+            data(){
+                return {
+                    msg:'hello'
+                }
+            }
+        }))
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

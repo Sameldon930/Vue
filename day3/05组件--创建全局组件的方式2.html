@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <mycom2></mycom2>
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        // 方式2
+            //创建组件的方式2  参数 组件名称 组件内容  组件内容必须要有一个标签将整体包起来  不论是什么方式都要遵循这个
+            Vue.component('mycom2',{
+                template:'<div><h3>这是使用Vue.extend创建的组件的第二种方式</h3><span>123131</span></div>'
+            })
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

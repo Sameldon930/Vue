@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <counter></counter>
+        <hr>
+        <counter></counter>
+        <hr>
+        <counter></counter>
+
+    </div>
+
+    <!-- 编写组件 counter -->
+    <template id="counter">
+        <div>
+            <input type="button" value="+1" @click="increment">
+            <h3>{{ count }}</h3>
+        </div>
+    </template>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        //定义一个对象
+        var dataObj = { count:0};
+        // 创建全局组件
+        Vue.component('counter',{
+            template:'#counter',
+            data(){
+                //return dataObj//如果用这个写法的话 会有一个问题 就是导致多次调用组件的时候 会同时操作同一个对象 这是不可取的
+                return { count:0}//这样写才是正确的
+            },
+            //组件中的方法
+            methods:{
+                increment(){
+                    this.count++
+                }
+            }
+        })
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+
+            }
+        })
+    </script>
+</body>
+</html>

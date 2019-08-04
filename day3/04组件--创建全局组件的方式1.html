@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用组件  com1  -->
+        <mycom1></mycom1>
+
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        //方式1写法1
+                //使用vue.extend 来创建全局组件 参数 组件名称 
+                // var com1 = Vue.extend({
+                //     template:'<h3>这是使用Vue.extend创建的组件方式1的写法1</h3>'//通过template属性 指定了组件要展示的html结构
+                // })
+                // //使用组件  组件名如果是驼峰的写法 调用组件的时候 需要用-隔开  如果不是驼峰 则原样调用
+                // Vue.component('mycom1',com1);
+        //方式1写法2
+        Vue.component('mycom1',Vue.extend({
+            template:'<h3>这是使用Vue.extend创建的组件方式1的写法2</h3>'
+        }))
+        var Vm =  new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+
+            }
+        });
+    </script>
+</body>
+</html>

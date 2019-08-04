@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+
+        .v-enter,
+        .v-leave-active{
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a href="" @click.prevent="comName='login'">选择登陆</a>
+        <a href="" @click.prevent="comName='register'">选择注册</a>
+        <a href="" @click.prevent="comName='vo'">选择游客身份</a>
+
+        <!-- vue提供了component来展示对应名称的组件
+        :is属性 用来指定要展示的组件的名称 如果是组件名 需要单引号包起来 如果是变量名 则不用 -->
+        <transition mode="out-in">
+                <component :is="comName"></component>
+        </transition>  
+
+    </div>
+
+    <template id="login">
+        <div>这是登陆组件</div>
+    </template>
+
+    <template id="register">
+            <div>这是注册组件</div>
+    </template>  
+
+    <template id="vo">
+            <div>这是游客组件</div>
+    </template>  
+
+    <script src="./lib/Vue.js"></script>
+    <script>
+        //注册登录组件
+        Vue.component('login',{
+            template:'#login'
+        });
+        //注册注册组件
+        Vue.component('register',{
+            template:'#register'
+        });
+        //注册游客组件
+        Vue.component('vo',{
+            template:'#vo'
+        })
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+                comName:'login'//页面默认显示为登陆组件
+            }
+        })
+    </script>
+</body>
+</html>

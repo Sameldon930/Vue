@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 实例app -->
+    <div id="app">
+        <mycom3></mycom3>  
+        <login></login>   
+    </div>
+    <!-- 实例app2 -->
+    <div id="app2">
+            <mycom3></mycom3>  
+    </div>
+
+    <!-- 创建可以智能提示的组件代码 -->
+
+    <template id="com">
+        <div>
+            <div>
+                    这是创建组件的第三种方式 只需要记住这个就好 其他了解一下
+            </div>
+        </div>
+    </template>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        // 方式3
+            Vue.component('mycom3',{
+                template:'#com'
+            })
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            methods:{
+
+            },
+            //定义私有组件  该组件只能被app这个实例使用
+            components:{
+                login:{//组件名
+                    template:'<h3>这是私有组件 叫login</h3>'
+                }
+            }
+        })
+
+        var Vm2 = new Vue({
+            el:'#app2'
+        })
+    </script>
+</body>
+</html>
