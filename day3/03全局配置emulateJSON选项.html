@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <script src="./lib/Vue.js"></script>
+    <script src="./lib/vue-resource.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"> 添加品牌</h3>
+                </div>
+                <div class="panel-body form-inline">
+                    <label>
+                        Name：
+                        <input type="text" class="form-control" v-model="name">
+                    </label>
+                    <input type="button" value="添加" class="btn-primary" @click="add">
+                </div>
+            </div>
+    
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Ctime</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in list" :key="item.id">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.ctime }}</td>
+                        <td>
+                            <a href="" @click.prevent="del(item.id)">删除</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    
+    <script>
+        //配置全局请求地址  对应的请求域名的前面不能加/
+        Vue.http.options.root = 'http://vue.studyit.io/';
+        //配置全局emulateJSON选项
+        Vue.http.options.emulalteJSON = true;
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+                name:'',
+                list:[
+                    {id:1,name:'zzs',time:new Date()},
+                    {id:2,name:'clp',time:new Date()}
+                ]
+                    
+                
+            },
+            // 当VM这个实例的data和methods初始化完毕后 实例会自动执行 下面这个生命周期函数
+            Mounted(){
+                this.getAllList();//调用获取数据的方法
+            },
+            methods:{
+                //添加品牌列表到后台数据
+                add(){
+                    this.$http.post('api/addproduct',{name:this.name}).then(res=>{
+                        if(res.body.status === 0){
+                            //请求成功之后 再次手动请求后台数据
+                            this.getAllList();
+                            this.name = '';
+                        }else{
+                            alert('添加失败');
+                        }
+                    })
+                },
+                //获取所有列表数据
+                getAllList(){
+                    this.$http.get('api/getprodlist').then((res)=>{
+                        var res = res.body
+                        if(res.status ===  0){//如果请求成功 将结果赋值给上方初始化的data
+                            this.list = res.message
+                        }else{  
+                            console.log(1111);
+                            
+                            alert('获取数据失败！');
+                        }
+                    })
+                },
+                del(id){
+                    this.$http.get('api/delproduct'+id).then(res=>{
+                        if(res.body.status === 0){
+                            this.getAllList();
+                        }else{
+                            alert('删除失败！')
+                        }
+                    })
+                }
+            
+            }
+            
+        })
+    </script>
+</body>
+</html>

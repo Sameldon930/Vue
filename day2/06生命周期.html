@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="改变值" @click="msg='No';">
+        <h3 id="h3">{{ msg }}</h3>
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var Vm = new Vue({
+        el:'#app',
+        data:{
+            msg:1231
+        },
+        methods:{
+            show(){
+                console.log('这是show方法！');
+                
+            }
+        },
+        beforeCreate(){//第一个我们遇到的生命周期函数   表示实例完全被创建出来
+        //此时data在这里还没有被初始化
+            // console.log(this.msg);-----undefined
+        //此时的show方法也没有被初始化
+            // this.show();
+            
+        },
+        Created(){//第二个遇到的生命周期函数  如果要调用data的内容和method的内容  最早只能在这里调用
+            console.log(this.msg);
+            this.show();            
+        },
+        beforeMount(){
+            //遇到的第三个生命周期函数 
+        //表示模板在内存中已经完成 但是还没有将数据渲染到页面上
+            //console.log(document.getElementById('h3').innerText);//{{ msg }}
+        },
+        Mounted(){//遇到的第四个生命周期函数 表示内存中的模板的数据已经渲染到页面上了
+        // console.log(document.getElementById('h3').innerText);
+        //mounted是实例创建的最后一个生命周期函数  当执行完mounted就表示 实例已经被创建好了 也就是初始化完毕
+        //
+        
+        },
+
+        //以上是初始化实例的过程 现在是运行中的两个事件
+        beforeUpdate(){//数据发生改变到时候 会触发  此时页面和data还没有同步
+            // console.log(document.getElementById('h3').innerText);
+        },
+        Update(){//执行这个函数的时候  页面和data才开始同步
+            console.log(document.getElementById('h3').innerText);
+
+        }
+
+
+    })
+    </script>
+    
+</body>
+</html>

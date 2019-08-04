@@ -20,8 +20,9 @@
                     <input type="text" class="form-control" v-model="id">
                 </label>
                 <label>
+                    按回车键的时候 就能执行添加 无需点击添加按钮
                     Name：
-                    <input type="text" class="form-control" v-model="name">
+                    <input type="text" class="form-control" v-model="name" @keyup.113="add">
                 </label>
                 <input type="button" value="添加" class="btn-primary" @click="add()">
 
@@ -66,6 +67,10 @@
 
             return `${y}-${m}-${d} ${h}:${i}:${s}`;
         });
+        //自定义全局按键修饰符
+        Vue.config.keyCodes.f2 = 113;
+
+
         var vm = new Vue({
             el:'#app',
             data:{

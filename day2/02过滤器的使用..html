@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./lib/Vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div> {{ msg | msgFormat('如此爱读书的我') | test}}</div>
+    </div>
+
+    <script>
+        //定义全局过滤器  参数1 固定是 过滤器操作的对象  参数2是执行转换成的内容
+        Vue.filter('msgFormat',(msg,arg)=>{
+            return msg.replace(/单纯/g,arg);//正则匹配所有的单纯  改成邪恶
+        })
+        Vue.filter('test',(msg)=>{
+            return msg+'==============';
+        })
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'单纯的我，却找不到一个单纯的她！'
+            },
+            methods:{
+
+            },
+            filters:{//定义私有过滤器   如果私有过滤器的名字和全局过滤器的名字相同 则先使用局部过滤器
+                msgFormat:function(){
+
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>
