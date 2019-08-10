@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="app">
-        <router-link to="/login" tag="button">登陆</router-link>
+        <router-link to="/login?id=21&name=zzs" tag="button">登陆</router-link>
         <router-link to="/register" tag="button">注册</router-link>
         <router-view></router-view>
     </div>
@@ -16,7 +16,17 @@
     <script src="./lib/vue-router.js"></script>
     <script>
         var login = {
-            template:'<h1>登陆</h1>'
+            template:'<h1>登陆{{ msg}}---{{ $route.query.name }}</h1>',
+            data(){
+                return{
+                    //将参数id 赋值给msg
+                    msg:this.$route.query.id
+                }
+            },
+            created(){
+                //获取路由的参数
+                console.log(this.$route.query.id)
+            }
         }
         var register = {
             template:'<h1>注册</h1>'

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <router-link to="account">account</router-link>
+        <router-view></router-view>
+        
+    </div>
+    <template id="tmp1">
+        <div>
+            <h1>这是account组件</h1>
+            <router-link to="/account/login">登陆</router-link>
+            <router-link to="/account/register">注册</router-link>
+            <router-view></router-view>
+
+        </div>
+    </template>
+    <script src="./lib/Vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+    <script>
+    var account = {
+        template:'#tmp1'
+    }
+    var login = {
+        template:'<h3>登陆</h3>'
+    }
+    var register = {
+        template:'<h3>注册</h3>'
+    }
+    var router = new VueRouter({
+        routes:[
+            {
+                path:'/account',
+                component:account,
+                //配置account组件中的子路由  子路由的路径不要带斜线
+                children:[
+                    {path:'login',component:login},
+                    {path:'register',component:register}
+
+                ]
+            }
+           
+        ]
+    })
+    var Vm =  new Vue({
+        el:'#app',
+        data:{},
+        methods:{},
+        router
+    })
+    </script>
+</body>
+</html>
