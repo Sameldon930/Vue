@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 此组件是子组件 如果要访问到父组件的数据 需要父组件传值给它  具体方法如下 -->
+        <!-- 这边配置完之后  还要在子组件中的props数组中进行配置 在进行相应的去接收 -->
+        <com1 :msg="msg"></com1>
+    </div>
+
+    
+
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'父组件的data的数据'
+            },
+            methods:{
+
+            },
+            components:{
+            
+                com1:{//子组件中默认无法访问到父组件中的data数据和method中的方法  如下的msg无法显示出来  如果要访问 需要父组件传值给子组件
+                    
+                    template:'<h1>子组件---这是{{ msg }}</h1>',
+                    props:[//这个props中的数据都是父组件传递过来的 需要的在这里接收  不推荐修改从父组件接收过来的数据  这里的数据是只读
+                        'msg'
+                    ]
+                }
+            }
+                
+              
+        })
+    </script>
+</body>
+</html>

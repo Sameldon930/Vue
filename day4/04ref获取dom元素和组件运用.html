@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="获取元素" @click="getElement">
+        <!-- ref用于vue来获取Dom元素 -->
+        <h3 ref="h3">今天真的好热啊</h3>
+        <login ref="login"></login>
+    </div>
+
+    <template id="login">
+        <div>
+            这是login组件
+        </div>
+    </template>
+
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var login = {
+            template:'#login',
+            data(){
+                return{
+                    msg:'son msg'
+                }
+            },
+            methods:{
+                show(){
+                    console.log('调用了子组件的方法')
+                }
+            }
+        };
+        var Vm = new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+                getElement(){
+                    //获取h3标签内容的写法  先在元素上 配置ref的名字 然后进行获取
+                    console.log(this.$refs.h3.innerText);
+                    console.log(this.$refs.login.msg);
+                }
+            },
+            components:{
+                login
+            }
+        
+        })
+    </script>
+</body>
+</html>

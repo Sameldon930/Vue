@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 父组件向子组件传递方法   -->
+        <com2 @show="show"></com2>
+    </div>
+    <template id="com2">
+        <div>
+            <h1>这是子组件</h1>
+            <input type="button"  value="这是子组件的按钮 点击触发父组件的方法" @click="myshow">
+        </div>
+    </template>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var com2 = {
+            template:'#com2',
+            methods:{
+                myshow(){
+                    //点击按钮的时候触发这个方法 然后这个方法再去触发父组件传过来的方法
+                    //emit触发
+                    console.log('触发了子组件的myshow方法  然后这个方法内部触发父组件的方法')
+                    this.$emit('show',12313)   
+                
+                }
+            }
+
+        };
+        var Vm = new Vue({
+            el:'#app',
+            data:{},
+            methods:{
+                show(data){//准备将show方法传递给子组件  参数的传递在子组件触发函数的时候 逗号后面传递
+                    console.log('调用了父组件的show方法！----'+data)
+                }
+            },
+            components:{
+                com2
+            }
+            
+        })
+    </script>
+</body>
+</html>
