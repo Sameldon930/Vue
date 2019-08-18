@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 显示某个组件的时候 对应的位置高亮 */
+        .router-link-active{
+            color:red;
+            font-weight: 800;
+            font-size: 20px;          
+        }
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(140px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition:all 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 调用路由 router-link默认渲染a标签   如果要渲染span  则加上属性  tag="span" 其他标签以此类推-->
+        <router-link to="/login"   tag="button">登陆</router-link>
+        <router-link to="/register"  tag="button">注册</router-link>
+
+        <transition mode="out-in">
+            <!-- 调用路由对象配置的组件 -->
+            <router-view></router-view>
+        </transition>
+    </div>
+
+    <script src="./lib/Vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+    <script>
+        //创建login组件  传到下面的component那边接收
+        var login = {
+            template:'<h1>登陆组件</h1>'
+        }
+        //创建注册组件 传到下面进行接收
+        var register = {
+            template:'<h1>注册组件</h1>'
+        }
+        //创建一个路由对象 vue-router 在new路由对象的时候 可以为构造函数 传递一个配置对象
+        var routeObj = new VueRouter({
+            //对象中的routes代表路由匹配规则的意思
+            routes:[  
+                //每个路由规则都是一个对象  这个规则对象上有两个必须的属性  
+                //path:监听哪个路由链接地址
+                //component: 路由地址存在 展示对应的组件   component接收的是组件的对象名 不是组件名  ；一个路由 对应一个组件 
+                {path:'/',redirect:'/login'},//进入初始页面 重定向 -------显示登陆
+                {path:'/login',component:login},//如果是登陆
+                {path:'/register',component:register}//如果是注册
+            ]
+        })
+
+        //创建一个vue实例
+        var Vm = new Vue({
+            el:"#app",
+            data:{},
+            methods:{},
+            //注册上面的路由 放到当前实例
+            router:routeObj,
+            //监视路由的改变
+            watch:{
+                '$route.path':function(newVal,oldVal){
+                    console.log(newVal+'-----'+oldVal);
+                    //如果进入登陆页面 就输出欢迎进入登陆页面
+                    if(newVal == '/login'){
+                        alert('欢迎进入登陆页面')
+                    }else{
+                        alert('欢迎进入注册页面')
+                    }
+
+                    
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

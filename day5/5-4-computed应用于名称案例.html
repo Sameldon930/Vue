@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="firstName" >+
+        <input type="text" v-model="lastName" >=
+        <input type="text" v-model="fullName"><!--fullName 不在对象的data中初始化 直接在computed进行计算处理-->
+        <p>{{ fullName }}</p>
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'',
+                lastName:'',
+            },
+            methods:{
+                
+            },
+            computed:{
+                //在computed中可以定义计算属性 这些属性也是方法 
+                'fullName':function(){
+                    return this.firstName + this.lastName
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>

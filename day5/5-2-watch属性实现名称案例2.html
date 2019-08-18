@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="firstName" >+
+        <input type="text" v-model="lastName" >=
+        <input type="text" v-model="fullName">
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        var Vm = new Vue({
+            el:'#app',
+            data:{
+                firstName:'',
+                lastName:'',
+                fullName:''
+            },
+            methods:{
+                
+            },
+            watch:{//监视data中指定数据的变化，然后触发这个watch对应的function
+                // 监视firstName这个属性  属性名称含有横线 则需要用单引号将属性名包裹起来 然后触发function
+                //参数1 监听的新值  参数2 监听的旧值
+                firstName:function(newVal,oldVal){
+                    this.fullName = newVal+this.lastName                   
+                },
+                lastName:function(newVal){
+                    this.fullName = this.firstName + newVal  
+                }
+            }
+            
+        })
+    </script>
+</body>
+</html>
