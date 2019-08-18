@@ -1,0 +1,30 @@
+{
+  "name": "Vue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development",
+    "start": " --mode development",
+    "build": "--mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sameldon930/Vue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sameldon930/Vue/issues"
+  },
+  "homepage": "https://github.com/Sameldon930/Vue#readme",
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
+  "description": "",
+  "devDependencies": {
+    "webpack": "^3.12.0"
+  },
+  "private": true
+}
