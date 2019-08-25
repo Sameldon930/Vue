@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+    </div>
+    <script src="./lib/Vue.js"></script>
+    <script>
+        // 创建一个模板
+        var login = {
+            template:'<h1>这是登陆组件</h1>'
+        }
+        
+        var Vm = new Vue({
+            el:'#app',
+            data:{},
+            methods:{},
+            render:function(createElements){
+                //调用参数 能够把组件模板 渲染为html结构  只要组件就可以不通过标签的形式 显示到页面上
+                //和之前components的方式相比  render会把app里面的其他元素全部屏蔽清空 而components不会
+                return  createElements(login)
+               
+            }
+
+        })
+    </script>
+</body>
+</html>

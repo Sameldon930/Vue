@@ -1,30 +1,36 @@
 {
-  "name": "Vue",
+  "name": "webpack_study",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development",
-    "start": " --mode development",
-    "build": "--mode production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sameldon930/Vue.git"
+    "dev": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Sameldon930/Vue/issues"
-  },
-  "homepage": "https://github.com/Sameldon930/Vue#readme",
   "dependencies": {
-    "jquery": "^3.4.1"
+    "bootstrap": "^4.3.1",
+    "html-webpack-plugin": "^3.2.0",
+    "jquery": "^3.4.1",
+    "node-sass": "^4.12.0"
   },
-  "description": "",
   "devDependencies": {
-    "webpack": "^3.12.0"
-  },
-  "private": true
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "sass-loader": "^7.3.1",
+    "style-loader": "^1.0.0",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
+  }
 }
